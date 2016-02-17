@@ -26,14 +26,14 @@ module VagrantPlugins
 
       def usable?(machine, raise_error=false)
         return true #for now
-        # If the machine explicitly said SSHFS is not supported, then
-        # it isn't supported.
-        if !machine.config.nfs.functional
-          return false
-        end
-        return true if machine.env.host.capability(:nfs_installed)
-        return false if !raise_error
-        raise Vagrant::Errors::NFSNotSupported
+       ## If the machine explicitly said SSHFS is not supported, then
+       ## it isn't supported.
+       #if !machine.config.nfs.functional
+       #  return false
+       #end
+       #return true if machine.env.host.capability(:nfs_installed)
+       #return false if !raise_error
+       #raise Vagrant::Errors::NFSNotSupported
       end
 
       def prepare(machine, folders, opts)
@@ -91,7 +91,7 @@ module VagrantPlugins
        #end
 
         # Mount
-        machine.ui.info I18n.t("vagrant.actions.vm.nfs.mounting")
+       #machine.ui.info I18n.t("vagrant.actions.vm.nfs.mounting")
 
         # Only mount folders that have a guest path specified.
         mount_folders = {}

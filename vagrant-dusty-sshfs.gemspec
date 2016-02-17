@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'version'
+require 'vagrant-dusty-sshfs/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "vagrant-dusty-sshfs"
-  spec.version       = Vagrant::Dusty::Sshfs::VERSION
+  spec.version       = VagrantPlugins::SyncedFolderSSHFS::VERSION
   spec.authors       = ["Dusty Mabe"]
   spec.email         = ["dusty@dustymabe.com"]
   spec.description   = "A Vagrant plugin that mounts folders with sshfs."

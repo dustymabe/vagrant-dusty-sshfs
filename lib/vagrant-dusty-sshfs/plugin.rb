@@ -1,7 +1,7 @@
 require "vagrant"
 
 module VagrantPlugins
-  module SyncedFolderNFS
+  module SyncedFolderSSHFS
     # This plugin implements SSHFS synced folders. In order to take advantage
     # of SSHFS synced folders, some provider-specific assistance is required.
     # Within the middleware sequences, some data must be put into the
