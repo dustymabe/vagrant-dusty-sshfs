@@ -54,6 +54,7 @@ module VagrantPlugins
        #  end
        #end
 
+        print("opts are " + sshfsopts.to_s)
         machine_ip = sshfsopts[:sshfs_machine_ip]
         machine_ip = [machine_ip] if !machine_ip.is_a?(Array)
 

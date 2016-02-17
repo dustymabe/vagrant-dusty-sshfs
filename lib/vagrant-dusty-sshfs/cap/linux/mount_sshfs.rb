@@ -30,7 +30,7 @@ module VagrantPlugins
           mount_opts = '-o StrictHostKeyChecking=no '
           mount_opts+= '-o allow_other '
           mount_opts+= '-o noauto_cache '
-          mount_opts+= "-p #{port} "
+#mount_opts+= "-p #{port} "
           #options+= '-o kernel_cache -o Ciphers=arcfour -o big_writes -o auto_cache -o cache_timeout=115200 -o attr_timeout=115200 -o entry_timeout=1200 -o max_readahead=90000 '
           #options+= '-o kernel_cache -o big_writes -o auto_cache -o cache_timeout=115200 -o attr_timeout=115200 -o entry_timeout=1200 -o max_readahead=90000 '
           #options+= '-o cache_timeout=3600 '
@@ -45,9 +45,9 @@ module VagrantPlugins
 
             mount_command = "sshfs " + mount_opts + "dustymabe@#{ip}:'#{hostpath}' #{expanded_guest_path}"
 #mount_command = "mount -o '#{mount_opts.join(",")}' #{ip}:'#{hostpath}' #{expanded_guest_path}"
-            retryable(on: Vagrant::Errors::LinuxSSHFSMountFailed, tries: 8, sleep: 3) do
+            retryable(on: VagrantPlugins::SyncedFolderSSHFS::Errors::LinuxSSHFSMountFailed, tries: 8, sleep: 3) do
               machine.communicate.sudo(mount_command,
-                                       error_class: Vagrant::Errors::LinuxSSHFSMountFailed)
+                                       error_class: VagrantPlugins::SyncedFolderSSHFS::Errors::LinuxSSHFSMountFailed)
             end
 
            ## Emit an upstart event if we can
