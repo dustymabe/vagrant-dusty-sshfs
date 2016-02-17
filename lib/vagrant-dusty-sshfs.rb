@@ -4,6 +4,7 @@ rescue LoadError
   raise "The Vagrant sshfs plugin must be run within Vagrant"
 end
 
+require "vagrant-dusty-sshfs/errors"
 require "vagrant-dusty-sshfs/version"
 require "vagrant-dusty-sshfs/plugin"
 

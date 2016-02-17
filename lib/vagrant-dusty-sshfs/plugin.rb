@@ -25,10 +25,10 @@ module VagrantPlugins
       implementation.
       EOF
 
-      config("sshfs") do
-        require_relative "config"
-        Config
-      end
+     #config("sshfs") do
+     #  require_relative "config"
+     #  Config
+     #end
 
       synced_folder("sshfs", 5) do
         require_relative "synced_folder"
@@ -38,7 +38,7 @@ module VagrantPlugins
       # Is this really linux specific?
       guest_capability("linux", "mount_sshfs_folder") do
         require_relative "cap/linux/mount_sshfs"
-        Cap::MountSSHFS
+        VagrantPlugins::GuestLinux::Cap::MountSSHFS
       end
 
     ##action_hook("nfs_cleanup") do |hook|
