@@ -35,18 +35,31 @@ module VagrantPlugins
         SyncedFolder
       end
 
-      # Is this really linux specific?
       guest_capability("linux", "mount_sshfs_folder") do
         require_relative "cap/linux/mount_sshfs"
         VagrantPlugins::GuestLinux::Cap::MountSSHFS
       end
 
-    ##action_hook("nfs_cleanup") do |hook|
-    ##  require_relative "action_cleanup"
-    ##  hook.before(
-    ##    Vagrant::Action::Builtin::SyncedFolderCleanup,
-    ##    ActionCleanup)
-    ##end
+      guest_capability("redhat", "sshfs_installed") do
+        require_relative "cap/redhat/sshfs_client"
+        VagrantPlugins::GuestRedHat::Cap::SSHFSClient
+      end
+
+      guest_capability("redhat", "sshfs_install") do
+        require_relative "cap/redhat/sshfs_client"
+        VagrantPlugins::GuestRedHat::Cap::SSHFSClient
+      end
+
+      guest_capability("fedora", "sshfs_installed") do
+        require_relative "cap/fedora/sshfs_client"
+        VagrantPlugins::GuestFedora::Cap::SSHFSClient
+      end
+
+      guest_capability("fedora", "sshfs_install") do
+        require_relative "cap/fedora/sshfs_client"
+        VagrantPlugins::GuestFedora::Cap::SSHFSClient
+      end
+
     end
   end
 end
